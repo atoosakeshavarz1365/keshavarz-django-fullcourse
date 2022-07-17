@@ -18,25 +18,24 @@ from django.views.generic import ListView, DetailView
 #     }
 #     return JsonResponse(data)
 
-def home(request, page=1):
-    #  --- use Manager published
-    articles_list = Article.objects.published()
-    paginator = Paginator(articles_list, 2)
-    articles = paginator.get_page(page)
-    context ={
-        # "articles":Article.objects.filter(status="p").order_by("-publish"),
-        "articles":articles,
-    }
-    return render(request,'blog/home.html',context)
+# def home(request, page=1):
+#     #  --- use Manager published
+#     articles_list = Article.objects.published()
+#     paginator = Paginator(articles_list, 2)
+#     articles = paginator.get_page(page)
+#     context ={
+#         # "articles":Article.objects.filter(status="p").order_by("-publish"),
+#         "articles":articles,
+#     }
+#     return render(request,'blog/home.html',context)
 
 #  --- write home method with Class Base View
-# class ArticleList(ListView):
-#     # --- return all Articles
-#     # model = Article
-#     queryset = Article.objects.published()
-#     template_name = 'blog/home.html'
-#     context_object_name = 'articles'
-#     pagination_by = 2
+class ArticleList(ListView):
+    # --- return all Articles
+    # model = Article
+    queryset = Article.objects.published()
+    template_name = 'blog/article_list.html'
+    paginate_by = 2
 
 
 
