@@ -51,11 +51,6 @@ class Article(models.Model):
         return jalali_converter(self.publish)    
     jpublish.short_description = "زمان انتشار"    
 
-    def category_published(self):
-        # return self.category.filter(title="amozesh")
-        return self.category.filter(status__in=[True])  
-        # return self.category.all()
-
     def thumbnail_tag(self):
         return format_html("<img width=90 style='border-radius:5px' src='{}'>".format(self.thumnail.url))
     thumbnail_tag.short_description = "تصویر"     
