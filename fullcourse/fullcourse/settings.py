@@ -27,7 +27,10 @@ SECRET_KEY = 'django-insecure-=auefq49-ldy#2y!4(!9d(-wivh$_#bh9fip8-9x8)&=gakq98
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+# --- this detect the page that i redirect after login 
+# --- this prevent Hard Code
+LOGIN_REDIRECT_URL = "account:home"
+LOGIN_URL = "account:login"
 
 # Application definition
 
@@ -39,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
+    'account.apps.AccountConfig',
     'extensions',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
